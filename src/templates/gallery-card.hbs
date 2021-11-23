@@ -1,6 +1,8 @@
-{{#each this}}
+{{!-- {{#each this}} --}}
 <div class="photo-card">
+    <a class="gallery__link" href={{largeImageUR}}>
     <img src={{webformatURL}} alt={{tags}} loading="lazy" />
+    </a>
     <div class="info">
         <p class="info-item">
             <b>{{Likes}}</b>
@@ -16,4 +18,4 @@
         </p>
     </div>
 </div>
-{{/each}}
+{{!-- {{/each}} --}}
