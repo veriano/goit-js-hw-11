@@ -20,11 +20,11 @@ function onSearchFormSubmit(e) {
 
     pixabayApiService.query = e.currentTarget.elements.searchQuery.value;
     pixabayApiService.resetPage();
-    pixabayApiService.fetchArticles().then(data => renderFotoCard(data));
+    pixabayApiService.fetchArticles().then(hits => renderFotoCard(hits));
     
     
-    // let lightbox = new SimpleLightbox('.gallery a');
-    // lightbox.refresh();
+    let lightbox = new SimpleLightbox('.gallery a');
+    lightbox.refresh();
 };
 
 function onLoadMore() {
