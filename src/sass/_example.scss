@@ -32,7 +32,7 @@
     padding: 20px;
     font-size: 25px;
     color:blueviolet;
-    visibility: hidden;
+    // visibility: hidden;
 }
 .is-visible {
   visibility: visible;
@@ -40,7 +40,7 @@
 input {
   width: 400px;
   padding: 20px;
-  margin-left: 30px;
+  margin-left: 10px;
   margin-top: 20px;
   color:blueviolet;
   font-size: 25px;
@@ -52,4 +52,10 @@ input {
     padding: 20px;
     font-size: 25px;
     color:blueviolet;  
+}
+.gallery {
+  height: 30px;
+  width: 100px;
+  display: block;
+  outline: blueviolet;
 }
