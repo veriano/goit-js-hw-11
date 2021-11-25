@@ -20,17 +20,16 @@ function onSearchFormSubmit(e) {
   pixabayApiService.query = e.currentTarget.elements.searchQuery.value.trim();
     pixabayApiService.resetPage();
     clearGalleryContainer();
-    pixabayApiService.fetchArticles()
-    .then(hits => renderFotoCard(hits));
+    pixabayApiService.fetchArticles().then((hits) => console.log(hits));
 
   loadMoreBtn.classList.add('is-visible');
 };
 
 function onLoadMore() {
-    pixabayApiService.fetchArticles().then(renderFotoCard);
+    pixabayApiService.fetchArticles().then(hits => console.log(hits));
 };
-function renderFotoCard(hits) {
-  galleryContainer.innerHTML = templateFunction(hits);
+function renderFotoCard(data) {
+  galleryContainer.innerHTML = templateFunction(data);
 }
 function clearGalleryContainer() {
     // galleryContainer.innerHTML = '';

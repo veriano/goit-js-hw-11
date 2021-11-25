@@ -19,11 +19,12 @@ export default class PixabayApiService {
         const BASE_URL = 'https://pixabay.com/api/';
         const API_KEY = '24463326-9b2d5a427846ea9fa30299421';
 
-        return axios(`${BASE_URL}?key=${API_KEY}&q=${this.searchQuery}&page=${this.page}&${searchParams}`)
-            .then(response => console.log(response));
-            //     this.incrementPage();
-            //          return hits
-            // }).catch(error => console.log(error));
+        return  axios.get(`${BASE_URL}?key=${API_KEY}&q=${this.searchQuery}&page=${this.page}&${searchParams}`)
+            .then((data) => {
+                console.log(data);
+                this.incrementPage();
+                     return data.hits;
+            }).catch(error => console.log(error));
     }
     incrementPage() {
         this.page += 1;
