@@ -20,7 +20,7 @@ export default class PixabayApiService {
         const API_KEY = '24463326-9b2d5a427846ea9fa30299421';
 
         return axios(`${BASE_URL}?key=${API_KEY}&q=${this.searchQuery}&page=${this.page}&${searchParams}`)
-            .then(response => concole.log(response));
+            .then(response => console.log(response));
             //     this.incrementPage();
             //          return hits
             // }).catch(error => console.log(error));
