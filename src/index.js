@@ -3,7 +3,6 @@ import PixabayApiService from './pixabay-service';
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 import Notiflix from 'notiflix';
-const axios = require('axios');
 import templateFunction from './templates/render-card.hbs';
 
 const form = document.getElementById('search-form');
@@ -18,22 +17,34 @@ function onSearchFormSubmit(e) {
     e.preventDefault();
 
   pixabayApiService.query = e.currentTarget.elements.searchQuery.value.trim();
+  if (pixabayApiService.query === '') {
+    return Notiflix.Notify.failure("Sorry, there are no images matching your search query. Please try again.")
+  }
     pixabayApiService.resetPage();
-    clearGalleryContainer();
-    pixabayApiService.fetchArticles().then((hits) => console.log(hits));
-
+    pixabayApiService.fetchImages().then(hits => {
+    if (hits.length === 0) {
+      loadMoreBtn.classList.remove('is-visible');
+      return Notiflix.Notify.failure("Sorry, there are no images matching your search query. Please try again.");
+    }
+      renderFotoCard(hits);
+      var lightbox = new SimpleLightbox('.gallery a');
+  })
   loadMoreBtn.classList.add('is-visible');
-};
-
+ };
+  
 function onLoadMore() {
-    pixabayApiService.fetchArticles().then(hits => console.log(hits));
+  pixabayApiService.fetchImages().then(hits => {
+    renderFotoCard(hits);
+    var lightbox = new SimpleLightbox('.gallery a');
+    lightbox.refresh();
+  })
+    .catch(loadMoreBtn.classList.remove('is-visible'),
+  Notiflix.Notify.info("We're sorry, but you've reached the end of search results."))
 };
 function renderFotoCard(data) {
   galleryContainer.innerHTML = templateFunction(data);
 }
-function clearGalleryContainer() {
-    // galleryContainer.innerHTML = '';
-}
+
 
 
 

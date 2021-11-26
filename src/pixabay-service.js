@@ -4,12 +4,9 @@ export default class PixabayApiService {
     constructor() {
         this.searchQuery = '';
         this.page = 1;
-        this.limitPerPage = 40;
-        this.totalEmages = 500;
-        this.totalPages = this.totalEmages / this.limitPerPage;
     }
-    fetchArticles() {
-        console.log(this);
+   async fetchImages() {
+    
         const searchParams = new URLSearchParams({
             image_type: 'photo',
             orientation: "horizontal",
@@ -19,12 +16,12 @@ export default class PixabayApiService {
         const BASE_URL = 'https://pixabay.com/api/';
         const API_KEY = '24463326-9b2d5a427846ea9fa30299421';
 
-        return  axios.get(`${BASE_URL}?key=${API_KEY}&q=${this.searchQuery}&page=${this.page}&${searchParams}`)
-            .then((data) => {
-                console.log(data);
+       const hits = await axios.get(`${BASE_URL}?key=${API_KEY}&q=${this.searchQuery}&page=${this.page}&${searchParams}`)
+                .then(data => {
                 this.incrementPage();
-                     return data.hits;
-            }).catch(error => console.log(error));
+                return data.data.hits;
+                });
+       return hits;
     }
     incrementPage() {
         this.page += 1;

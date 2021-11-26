@@ -26,9 +26,9 @@
 //   background-position: center;
 // }
 .load-more {
+  display: block;
     width: 200px;
-    margin-left: 50px;
-    margin-top: 20px;
+    margin: 0 auto;
     padding: 20px;
     font-size: 25px;
     color:blueviolet;
@@ -40,7 +40,7 @@
 input {
   width: 400px;
   padding: 20px;
-  margin-left: 10px;
+  margin-left: 50px;
   margin-top: 20px;
   color:blueviolet;
   font-size: 25px;
@@ -53,5 +53,12 @@ input {
     font-size: 25px;
     color:blueviolet;  
 }
-
+.statistics {
+  color:blue;
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-between;
+}
 
