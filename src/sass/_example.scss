@@ -29,8 +29,8 @@
   display: block;
     width: 200px;
     margin: 0 auto;
-    padding: 20px;
-    font-size: 25px;
+    padding: 18px;
+    font-size: 18px;
     color:blueviolet;
     visibility: hidden;
 }
@@ -38,25 +38,28 @@
   visibility: visible;
 }
 input {
-  width: 400px;
-  padding: 20px;
-  margin-left: 50px;
-  margin-top: 20px;
+  position: fixed;
+  top: 0;
+  left: 30vw;
+  width: 300px;
+  padding: 21px;
   color:blueviolet;
-  font-size: 25px;
+  font-size: 35px;
 }
 .search-form button {
+  position: fixed;
+  top: 0;
+  left: 53vw;
   width: 200px;
-    margin-left: 10px;
-    margin-top: 40px;
     padding: 20px;
-    font-size: 25px;
+    font-size: 18px;
     color:blueviolet;  
 }
 .statistics {
   color:blue;
 }
 .gallery {
+  margin-top: 73px;
   display: flex;
   flex-wrap: wrap;
   justify-content:space-between;
